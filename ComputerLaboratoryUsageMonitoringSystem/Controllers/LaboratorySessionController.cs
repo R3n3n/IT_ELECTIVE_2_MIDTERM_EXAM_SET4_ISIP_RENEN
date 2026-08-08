@@ -17,8 +17,6 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
             _sessionRepository = sessionRepository;
         }
 
-        // MONITORING LIST / SEARCH
-
         public IActionResult Index(string? search)
         {
             var sessions = _sessionRepository.GetAll();
@@ -68,9 +66,6 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
             return View(sessions);
         }
 
-
-        // CREATE / REGISTER SESSION
-
         [HttpGet]
         public IActionResult Create()
         {
@@ -89,6 +84,23 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
         {
             if (!ModelState.IsValid)
             {
+                return View(model);
+            }
+
+            var computerInUse = _sessionRepository
+                .GetAll()
+                .Any(s =>
+                    s.ComputerNumber == model.ComputerNumber &&
+                    s.Status == "Using"
+                );
+
+            if (computerInUse)
+            {
+                ModelState.AddModelError(
+                    "ComputerNumber",
+                    "This computer is currently in use. Please select another computer."
+                );
+
                 return View(model);
             }
 
@@ -117,8 +129,6 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // DETAILS
-
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -131,8 +141,6 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
 
             return View(session);
         }
-
-        // EDIT
 
         [HttpGet]
         public IActionResult Edit(int id)
@@ -167,9 +175,7 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(
-            int id,
-            LaboratorySessionDto model)
+        public IActionResult Edit(int id, LaboratorySessionDto model)
         {
             if (!ModelState.IsValid)
             {
@@ -181,6 +187,28 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
             if (session == null)
             {
                 return NotFound();
+            }
+
+            var computerInUse = _sessionRepository
+                .GetAll()
+                .Any(s =>
+                    s.Id != id &&
+                    s.ComputerNumber == model.ComputerNumber &&
+                    s.Status == "Using"
+                );
+
+            if (computerInUse)
+            {
+                ModelState.AddModelError(
+                    "ComputerNumber",
+                    "This computer is currently in use. Please select another computer."
+                );
+
+                ViewBag.SessionNumber = session.SessionNumber;
+                ViewBag.Status = session.Status;
+                ViewBag.TimeOut = session.TimeOut;
+
+                return View(model);
             }
 
             session.StudentNumber = model.StudentNumber;
@@ -199,9 +227,8 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
                 "Laboratory session updated successfully.";
 
             return RedirectToAction(nameof(Index));
-        }
 
-        // TIME OUT
+        }
 
         [HttpGet]
         public IActionResult TimeOut(int id)
@@ -245,8 +272,6 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-        // DELETE
 
         [HttpPost]
         [ValidateAntiForgeryToken]

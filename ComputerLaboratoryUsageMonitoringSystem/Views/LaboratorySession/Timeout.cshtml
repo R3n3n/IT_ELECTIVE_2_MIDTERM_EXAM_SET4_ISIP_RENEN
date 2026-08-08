@@ -4,144 +4,82 @@
     ViewData["Title"] = "Record Time Out";
 }
 
-<div class="container mt-5">
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
 
-    <div class="row justify-content-center">
+                ```
+                <h2 class="mb-3">Record Time Out</h2>
 
-        <div class="col-md-7">
+                <p class="text-muted">
+                    Confirm that the student has finished using the laboratory computer.
+                </p>
 
-            <div class="card shadow-sm">
+                <div class="alert alert-info">
+                    <strong>Session #@Model.SessionNumber</strong><br />
 
-                <div class="card-body p-4">
+                    Student: @Model.FirstName @Model.LastName<br />
+                    Computer: @Model.ComputerNumber<br />
 
-                    <h2 class="mb-3">
-                        Record Time Out
-                    </h2>
-
-                    <p class="text-muted">
-                        Confirm that the student has finished using
-                        the laboratory computer.
-                    </p>
-
-
-                    <div class="alert alert-info">
-
-                        <strong>
-                            Session #@Model.SessionNumber
-                        </strong>
-
-                        <br />
-
-                        Student:
-                        @Model.FirstName @Model.LastName
-
-                        <br />
-
-                        Computer:
-                        @Model.ComputerNumber
-
-                        <br />
-
-                        Time In:
-                        @Model.TimeIn.ToString(
-                        "MMM dd, yyyy hh:mm tt"
-                                                )
-
-                    </div>
-
-
-                    @if (Model.Status == "Finished")
-                    {
-                        <div class="alert alert-success">
-
-                            This session has already been
-                            recorded as finished.
-
-                            @if (Model.TimeOut.HasValue)
-                            {
-                                <br />
-
-                                <strong>
-                                    Time Out:
-                                </strong>
-
-                                @Model.TimeOut.Value.ToString(
-                                "MMM dd, yyyy hh:mm tt"
-                                                )
-                                                }
-
-                        </div>
-
-                        <a asp-action="Index"
-                           class="btn btn-secondary">
-                            Back to Monitoring
-                        </a>
-                    }
-                    else
-                    {
-                        <form asp-action="TimeOut"
-                              method="post">
-
-                            @Html.AntiForgeryToken()
-
-                            <input type="hidden"
-                                   name="id"
-                                   value="@Model.Id" />
-
-
-                            <div class="mb-4">
-
-                                <label for="notes"
-                                       class="form-label">
-                                    Notes
-                                </label>
-
-                                <textarea name="notes"
-                                      id="notes"
-                                      class="form-control"
-                                      rows="3"
-                                      placeholder="Optional notes about the session">
-                                </textarea>
-
-                            </div>
-
-
-                            <div class="alert alert-warning">
-
-                                <strong>
-                                    Important:
-                                </strong>
-
-                                Clicking "Confirm Time Out" will record
-                                the current date and time and change the
-                                session status to "Finished".
-
-                            </div>
-
-
-                            <div class="d-flex justify-content-end gap-2">
-
-                                <a asp-action="Index"
-                                   class="btn btn-secondary">
-                                    Cancel
-                                </a>
-
-                                <button type="submit"
-                                        class="btn btn-success">
-                                    Confirm Time Out
-                                </button>
-
-                            </div>
-
-                        </form>
-                    }
-
+                    Time In: @Model.TimeIn.ToString("MMM dd, yyyy hh:mm tt")
                 </div>
 
+                @if (Model.Status == "Finished")
+                {
+                    <div class="alert alert-success">
+                        This session has already been recorded as finished.
+
+                        @if (Model.TimeOut.HasValue)
+                        {
+                            <br />
+                            <strong>Time Out:</strong>
+                            @Model.TimeOut.Value.ToString("MMM dd, yyyy hh:mm tt")
+                        }
+                    </div>
+
+                    <a asp-action="Index" class="btn btn-secondary">
+                        Back to Monitoring
+                    </a>
+                }
+                else
+                {
+                    <form asp-action="TimeOut" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden" name="id" value="@Model.Id" />
+
+                        <div class="mb-4">
+                            <label for="notes" class="form-label">Notes</label>
+
+                            <textarea name="notes"
+                                  id="notes"
+                                  class="form-control"
+                                  rows="3"
+                                  placeholder="Optional notes about the session"></textarea>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Important:</strong>
+                            Clicking "Confirm Time Out" will record the current date and time
+                            and change the session status to "Finished".
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                Cancel
+                            </a>
+
+                            <button type="submit" class="btn btn-success">
+                                Confirm Time Out
+                            </button>
+                        </div>
+                    </form>
+                }
+
             </div>
-
         </div>
-
     </div>
+    ```
 
 </div>

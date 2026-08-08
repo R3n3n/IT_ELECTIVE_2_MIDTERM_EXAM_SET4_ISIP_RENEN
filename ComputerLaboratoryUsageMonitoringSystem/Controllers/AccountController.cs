@@ -18,8 +18,6 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
             _userRepository = userRepository;
         }
 
-        // LOGIN
-
         [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
@@ -74,9 +72,6 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
             );
         }
 
-
-        // REGISTER
-
         [AllowAnonymous]
         [HttpGet]
         public IActionResult Register()
@@ -119,9 +114,6 @@ namespace ComputerLaboratoryUsageMonitoringSystem.Controllers
 
             return RedirectToAction("Login");
         }
-
-
-        // LOGOUT
 
         [Authorize]
         [HttpPost]
