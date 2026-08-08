@@ -1,0 +1,302 @@
+﻿@model ComputerLaboratoryUsageMonitoringSystem.Models.DTOs.LaboratorySessionDto
+
+@{
+    ViewData["Title"] = "Edit Laboratory Session";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <div>
+                    <h2>Edit Laboratory Session</h2>
+
+                    <p class="text-muted mb-0">
+                        Session #@ViewBag.SessionNumber
+                    </p>
+                </div>
+
+                <a asp-action="Index"
+                   class="btn btn-outline-secondary">
+                    Back to Monitoring
+                </a>
+
+            </div>
+
+
+            <div class="card shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <div class="alert alert-info">
+
+                        Current Status:
+
+                        @if (ViewBag.Status == "Using")
+                        {
+                            <strong>Using</strong>
+                        }
+                        else
+                        {
+                            <strong>Finished</strong>
+                        }
+
+                    </div>
+
+
+                    <form asp-action="Edit"
+                          method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden"
+                               name="id"
+                               value="@Context.Request.RouteValues["id"]" />
+
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="alert alert-danger">
+                        </div>
+
+
+                        <h5 class="mb-3">
+                            Student Information
+                        </h5>
+
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="StudentNumber"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="StudentNumber"
+                                       class="form-control" />
+
+                                <span asp-validation-for="StudentNumber"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Course"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="Course"
+                                       class="form-control" />
+
+                                <span asp-validation-for="Course"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="FirstName"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="FirstName"
+                                       class="form-control" />
+
+                                <span asp-validation-for="FirstName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="LastName"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="LastName"
+                                       class="form-control" />
+
+                                <span asp-validation-for="LastName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="YearLevel"
+                                       class="form-label">
+                                </label>
+
+                                <select asp-for="YearLevel"
+                                        class="form-select">
+
+                                    <option value="1">
+                                        1st Year
+                                    </option>
+
+                                    <option value="2">
+                                        2nd Year
+                                    </option>
+
+                                    <option value="3">
+                                        3rd Year
+                                    </option>
+
+                                    <option value="4">
+                                        4th Year
+                                    </option>
+
+                                    <option value="5">
+                                        5th Year
+                                    </option>
+
+                                    <option value="6">
+                                        6th Year
+                                    </option>
+
+                                </select>
+
+                                <span asp-validation-for="YearLevel"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="ComputerNumber"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="ComputerNumber"
+                                       class="form-control"
+                                       type="number"
+                                       min="1"
+                                       max="100" />
+
+                                <span asp-validation-for="ComputerNumber"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <hr class="my-4" />
+
+
+                        <h5 class="mb-3">
+                            Session Information
+                        </h5>
+
+
+                        <div class="mb-3">
+
+                            <label asp-for="Purpose"
+                                   class="form-label">
+                            </label>
+
+                            <textarea asp-for="Purpose"
+                                      class="form-control"
+                                      rows="3">
+                            </textarea>
+
+                            <span asp-validation-for="Purpose"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label asp-for="TimeIn"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="TimeIn"
+                                   class="form-control"
+                                   type="datetime-local" />
+
+                            <span asp-validation-for="TimeIn"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label asp-for="Notes"
+                                   class="form-label">
+                            </label>
+
+                            <textarea asp-for="Notes"
+                                      class="form-control"
+                                      rows="3">
+                            </textarea>
+
+                            <span asp-validation-for="Notes"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <div class="d-flex justify-content-end gap-2">
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary">
+                                Cancel
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-warning">
+                                Save Changes
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

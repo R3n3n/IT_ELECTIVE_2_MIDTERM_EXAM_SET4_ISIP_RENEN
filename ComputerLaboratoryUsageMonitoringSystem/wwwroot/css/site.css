@@ -1,0 +1,389 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* ---------- NAVIGATION ---------- */
+
+.lab-navbar {
+    background: linear-gradient( 135deg, #172554, #1e3a8a );
+    min-height: 68px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+
+    .lab-navbar .navbar-brand {
+        font-size: 1.15rem;
+        letter-spacing: 0.2px;
+    }
+
+
+.brand-icon {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 9px;
+    font-size: 1.1rem;
+}
+
+
+.lab-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.82) !important;
+    font-size: 0.95rem;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+
+    .lab-navbar .nav-link:hover {
+        color: #ffffff !important;
+        background-color: rgba(255, 255, 255, 0.10);
+        border-radius: 7px;
+    }
+
+
+    .lab-navbar .nav-link.active {
+        color: #ffffff !important;
+        background-color: rgba(255, 255, 255, 0.14);
+        border-radius: 7px;
+    }
+
+
+/* ---------- USER AREA ---------- */
+
+.user-welcome {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 0.9rem;
+}
+
+
+.user-icon {
+    margin-right: 4px;
+}
+
+
+/* ---------- NAV BUTTONS ---------- */
+
+.logout-btn,
+.register-nav-btn {
+    border-radius: 7px;
+    font-weight: 500;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+    .logout-btn:hover,
+    .register-nav-btn:hover {
+        transform: translateY(-1px);
+    }
+
+
+/* ---------- MAIN PAGE ---------- */
+
+main {
+    min-height: calc(100vh - 140px);
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.lab-footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 22px 0;
+    margin-top: 40px;
+}
+
+
+.footer-icon {
+    font-size: 1.1rem;
+}
+
+
+/* ---------- GENERAL CARDS ---------- */
+
+.card {
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+    .card:hover {
+        box-shadow: 0 5px 16px rgba(0, 0, 0, 0.07);
+    }
+
+
+/* ---------- BUTTONS ---------- */
+
+.btn {
+    border-radius: 7px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+
+/* ---------- FORM INPUTS ---------- */
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    border-color: #d9dee5;
+    padding: 0.65rem 0.75rem;
+}
+
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #86a5e5;
+        box-shadow: 0 0 0 0.2rem rgba( 30, 58, 138, 0.12 );
+    }
+
+
+/* ---------- TABLE ---------- */
+
+.table {
+    margin-bottom: 0;
+}
+
+
+    .table thead th {
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #6b7280;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+
+    .table tbody td {
+        vertical-align: middle;
+    }
+
+
+/* ---------- STATUS BADGES ---------- */
+
+.badge {
+    border-radius: 50px;
+    padding: 0.5em 0.75em;
+    font-weight: 500;
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 991px) {
+
+    .lab-navbar .nav-link {
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .register-nav-btn {
+        display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .user-welcome {
+        padding-left: 0.85rem !important;
+    }
+}
+
+/* HOME PAGE */
+
+.home-system-card {
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    padding: 2rem;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+
+.system-card-icon {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eff6ff;
+
+    border-radius: 14px;
+
+    font-size: 2rem;
+}
+
+
+.system-feature {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding: 12px 0;
+
+    border-top: 1px solid #f0f1f3;
+}
+
+
+.system-feature:first-of-type {
+    border-top: none;
+}
+
+
+.feature-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #f8f9fa;
+
+    border-radius: 9px;
+
+    font-size: 1.1rem;
+}
+
+
+.feature-card-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eff6ff;
+
+    border-radius: 10px;
+
+    font-size: 1.3rem;
+}
+
+/* ==========================================
+   LABORATORY SESSION / MONITORING PAGE
+   ========================================== */
+
+
+.computer-number {
+    display: inline-block;
+    background: #f3f4f6;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+
+.status-using {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+
+.status-finished {
+    background-color: #e5e7eb;
+    color: #4b5563;
+}
+
+
+.table > :not(caption) > * > * {
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+}
+
+
+.card {
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+
+.input-group-text {
+    background-color: #ffffff;
+    border-color: #d9dee5;
+    color: #6b7280;
+}
+
+
+.table thead th {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #6b7280;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+
+.table tbody td {
+    vertical-align: middle;
+}
+
+
+.badge {
+    border-radius: 50px;
+    padding: 0.5em 0.75em;
+    font-weight: 500;
+}
+
+
+.btn-group .btn {
+    white-space: nowrap;
+}
+
+
+@media (max-width: 768px) {
+
+    .table {
+        min-width: 1000px;
+    }
+}
+

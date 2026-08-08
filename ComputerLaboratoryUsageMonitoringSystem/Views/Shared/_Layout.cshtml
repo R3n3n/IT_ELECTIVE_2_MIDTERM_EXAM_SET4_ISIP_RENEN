@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        @ViewData["Title"] - Computer Laboratory Monitoring System
+    </title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+</head>
+
+
+<body class="bg-light">
+
+    <!-- ================================
+         NAVIGATION BAR
+         ================================ -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark lab-navbar">
+
+        <div class="container">
+
+            <!-- BRAND -->
+
+            <a class="navbar-brand d-flex align-items-center gap-2"
+               asp-controller="Home"
+               asp-action="Index">
+
+                <span class="brand-icon">
+                    🖥️
+                </span>
+
+                <span>
+                    <strong>LabMonitor</strong>
+                </span>
+
+            </a>
+
+
+            <!-- MOBILE TOGGLE -->
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavigation"
+                    aria-controls="mainNavigation"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="collapse navbar-collapse"
+                 id="mainNavigation">
+
+                <!-- LEFT SIDE -->
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    @if (User.Identity != null &&
+                                        User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Index">
+
+                                Home
+
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-controller="LaboratorySession"
+                               asp-action="Index">
+
+                                Monitoring
+
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-controller="LaboratorySession"
+                               asp-action="Create">
+
+                                Register Session
+
+                            </a>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Index">
+
+                                Home
+
+                            </a>
+
+                        </li>
+                    }
+
+                </ul>
+
+
+                <!-- RIGHT SIDE -->
+
+                <ul class="navbar-nav align-items-lg-center">
+
+                    @if (User.Identity != null &&
+                                        User.Identity.IsAuthenticated)
+                    {
+                        <!-- USER -->
+
+                        <li class="nav-item me-lg-3">
+
+                            <span class="nav-link user-welcome">
+
+                                <span class="user-icon">
+                                    👤
+                                </span>
+
+                                Welcome,
+                                <strong>
+                                    @User.Identity.Name
+                                </strong>
+
+                            </span>
+
+                        </li>
+
+
+                        <!-- LOGOUT -->
+
+                        <li class="nav-item">
+
+                            <form asp-controller="Account"
+                                  asp-action="Logout"
+                                  method="post"
+                                  class="d-inline">
+
+                                @Html.AntiForgeryToken()
+
+                                <button type="submit"
+                                        class="btn btn-light btn-sm logout-btn">
+
+                                    Logout
+
+                                </button>
+
+                            </form>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <!-- LOGIN -->
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-controller="Account"
+                               asp-action="Login">
+
+                                Login
+
+                            </a>
+
+                        </li>
+
+
+                        <!-- REGISTER -->
+
+                        <li class="nav-item ms-lg-2">
+
+                            <a class="btn btn-light btn-sm register-nav-btn"
+                               asp-controller="Account"
+                               asp-action="Register">
+
+                                Register
+
+                            </a>
+
+                        </li>
+                    }
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================================
+         MAIN CONTENT
+         ================================ -->
+
+    <main role="main">
+
+        @RenderBody()
+
+    </main>
+
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    <footer class="lab-footer">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-6">
+
+                    <div class="d-flex align-items-center gap-2">
+
+                        <span class="footer-icon">
+                            🖥️
+                        </span>
+
+                        <span>
+                            Computer Laboratory Monitoring System
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 text-md-end mt-2 mt-md-0">
+
+                    <small>
+                        © @DateTime.Now.Year
+                        • Laboratory Usage Monitoring
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
+    @await RenderSectionAsync(
+    "Scripts",
+        required: false
+        )
+
+</body>
+
+</html>

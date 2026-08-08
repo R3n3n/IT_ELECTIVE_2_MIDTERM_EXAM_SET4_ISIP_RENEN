@@ -1,0 +1,264 @@
+﻿@model ComputerLaboratoryUsageMonitoringSystem.Models.LaboratorySession
+
+@{
+    ViewData["Title"] = "Session Details";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2>Laboratory Session Details</h2>
+            <p class="text-muted">
+                View complete information about this laboratory session.
+            </p>
+        </div>
+
+        <a asp-action="Index"
+           class="btn btn-outline-secondary">
+            Back to Monitoring
+        </a>
+
+    </div>
+
+
+    <div class="card shadow-sm">
+
+        <div class="card-body p-4">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-4">
+
+                    <h6 class="text-muted">
+                        Session Number
+                    </h6>
+
+                    <h4>
+                        @Model.SessionNumber
+                    </h4>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <h6 class="text-muted">
+                        Status
+                    </h6>
+
+                    @if (Model.Status == "Using")
+                    {
+                        <span class="badge bg-primary fs-6">
+                            Using
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success fs-6">
+                            Finished
+                        </span>
+                    }
+
+                </div>
+
+            </div>
+
+
+            <hr />
+
+
+            <h5 class="mb-3">
+                Student Information
+            </h5>
+
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>
+                        Student Number
+                    </strong>
+
+                    <p>
+                        @Model.StudentNumber
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>
+                        Student Name
+                    </strong>
+
+                    <p>
+                        @Model.FirstName @Model.LastName
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>
+                        Course
+                    </strong>
+
+                    <p>
+                        @Model.Course
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>
+                        Year Level
+                    </strong>
+
+                    <p>
+                        @Model.YearLevel
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <hr />
+
+
+            <h5 class="mb-3">
+                Laboratory Usage
+            </h5>
+
+
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+
+                    <strong>
+                        Computer Number
+                    </strong>
+
+                    <p>
+                        Computer @Model.ComputerNumber
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+
+                    <strong>
+                        Time In
+                    </strong>
+
+                    <p>
+                        @Model.TimeIn.ToString(
+                        "MMM dd, yyyy hh:mm tt"
+                                                )
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+
+                    <strong>
+                        Time Out
+                    </strong>
+
+                    <p>
+
+                        @if (Model.TimeOut.HasValue)
+                        {
+                            @Model.TimeOut.Value.ToString(
+                            "MMM dd, yyyy hh:mm tt"
+                                                )
+                                                }
+                        else
+                        {
+                            <span class="text-muted">
+                                Not yet timed out
+                            </span>
+                        }
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="mb-4">
+
+                <strong>
+                    Purpose
+                </strong>
+
+                <p class="mt-2">
+                    @Model.Purpose
+                </p>
+
+            </div>
+
+
+            <div class="mb-4">
+
+                <strong>
+                    Notes
+                </strong>
+
+                <p class="mt-2">
+
+                    @if (!string.IsNullOrWhiteSpace(Model.Notes))
+                    {
+                        @Model.Notes
+                    }
+                    else
+                    {
+                        <span class="text-muted">
+                            No notes.
+                        </span>
+                    }
+
+                </p>
+
+            </div>
+
+
+            <div class="d-flex gap-2">
+
+                <a asp-action="Edit"
+                   asp-route-id="@Model.Id"
+                   class="btn btn-warning">
+                    Edit
+                </a>
+
+                @if (Model.Status == "Using")
+                {
+                    <a asp-action="TimeOut"
+                       asp-route-id="@Model.Id"
+                       class="btn btn-success">
+                        Record Time Out
+                    </a>
+                }
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Back
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
