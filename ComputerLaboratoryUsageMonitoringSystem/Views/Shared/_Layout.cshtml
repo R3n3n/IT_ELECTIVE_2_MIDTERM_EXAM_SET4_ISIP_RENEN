@@ -12,11 +12,9 @@
         @ViewData["Title"] - Computer Laboratory Monitoring System
     </title>
 
-    <!-- Bootstrap -->
     <link rel="stylesheet"
           href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-    <!-- Site CSS -->
     <link rel="stylesheet"
           href="~/css/site.css"
           asp-append-version="true" />
@@ -26,32 +24,19 @@
 
 <body class="bg-light">
 
-    <!-- ================================
-         NAVIGATION BAR
-         ================================ -->
-
     <nav class="navbar navbar-expand-lg navbar-dark lab-navbar">
 
         <div class="container">
 
-            <!-- BRAND -->
-
             <a class="navbar-brand d-flex align-items-center gap-2"
                asp-controller="Home"
                asp-action="Index">
-
-                <span class="brand-icon">
-                    🖥️
-                </span>
 
                 <span>
                     <strong>LabMonitor</strong>
                 </span>
 
             </a>
-
-
-            <!-- MOBILE TOGGLE -->
 
             <button class="navbar-toggler"
                     type="button"
@@ -65,13 +50,8 @@
 
             </button>
 
-
-            <!-- NAVIGATION -->
-
             <div class="collapse navbar-collapse"
                  id="mainNavigation">
-
-                <!-- LEFT SIDE -->
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
@@ -133,23 +113,15 @@
 
                 </ul>
 
-
-                <!-- RIGHT SIDE -->
-
                 <ul class="navbar-nav align-items-lg-center">
 
                     @if (User.Identity != null &&
                                         User.Identity.IsAuthenticated)
                     {
-                        <!-- USER -->
 
                         <li class="nav-item me-lg-3">
 
                             <span class="nav-link user-welcome">
-
-                                <span class="user-icon">
-                                    👤
-                                </span>
 
                                 Welcome,
                                 <strong>
@@ -159,9 +131,6 @@
                             </span>
 
                         </li>
-
-
-                        <!-- LOGOUT -->
 
                         <li class="nav-item">
 
@@ -185,7 +154,6 @@
                     }
                     else
                     {
-                        <!-- LOGIN -->
 
                         <li class="nav-item">
 
@@ -199,8 +167,6 @@
 
                         </li>
 
-
-                        <!-- REGISTER -->
 
                         <li class="nav-item ms-lg-2">
 
@@ -223,21 +189,11 @@
 
     </nav>
 
-
-    <!-- ================================
-         MAIN CONTENT
-         ================================ -->
-
     <main role="main">
 
         @RenderBody()
 
     </main>
-
-
-    <!-- ================================
-         FOOTER
-         ================================ -->
 
     <footer class="lab-footer">
 
@@ -248,10 +204,6 @@
                 <div class="col-md-6">
 
                     <div class="d-flex align-items-center gap-2">
-
-                        <span class="footer-icon">
-                            🖥️
-                        </span>
 
                         <span>
                             Computer Laboratory Monitoring System
@@ -276,11 +228,6 @@
         </div>
 
     </footer>
-
-
-    <!-- ================================
-         SCRIPTS
-         ================================ -->
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 

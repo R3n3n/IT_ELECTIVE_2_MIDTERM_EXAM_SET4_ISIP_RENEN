@@ -6,8 +6,6 @@
 
 <div class="container py-4">
 
-    <!-- PAGE HEADER -->
-
     <div class="d-flex flex-column flex-md-row
                 justify-content-between
                 align-items-md-center
@@ -17,10 +15,6 @@
         <div>
 
             <div class="d-flex align-items-center gap-2 mb-1">
-
-                <span class="fs-3">
-                    🖥️
-                </span>
 
                 <h2 class="fw-bold mb-0">
                     Laboratory Monitoring
@@ -48,13 +42,11 @@
 
     </div>
 
-
-    <!-- SUCCESS MESSAGE -->
     @if (TempData["SuccessMessage"] != null)
     {
         <div class="alert alert-success
-                        alert-dismissible fade show
-                        shadow-sm"
+                            alert-dismissible fade show
+                            shadow-sm"
              role="alert">
 
             <strong>Success!</strong>
@@ -68,9 +60,6 @@
 
         </div>
     }
-
-
-    <!-- SEARCH -->
 
     <div class="card shadow-sm mb-4">
 
@@ -91,10 +80,6 @@
                         </label>
 
                         <div class="input-group">
-
-                            <span class="input-group-text">
-                                🔎
-                            </span>
 
                             <input type="text"
                                    id="search"
@@ -127,9 +112,6 @@
 
     </div>
 
-
-    <!-- MONITORING TABLE -->
-
     <div class="card shadow-sm">
 
         <div class="card-header bg-white py-3">
@@ -153,13 +135,8 @@
 
             @if (!Model.Any())
             {
-                <!-- EMPTY STATE -->
 
                 <div class="text-center py-5 px-3">
-
-                    <div class="fs-1 mb-3">
-                        📋
-                    </div>
 
                     <h5 class="fw-bold">
                         No laboratory sessions found
@@ -232,8 +209,6 @@
                             {
                                 <tr>
 
-                                    <!-- SESSION -->
-
                                     <td class="ps-4">
 
                                         <span class="fw-semibold">
@@ -241,9 +216,6 @@
                                         </span>
 
                                     </td>
-
-
-                                    <!-- STUDENT -->
 
                                     <td>
 
@@ -263,14 +235,10 @@
                                     </td>
 
 
-                                    <!-- COURSE -->
-
                                     <td>
                                         @item.Course
                                     </td>
 
-
-                                    <!-- COMPUTER -->
 
                                     <td>
 
@@ -281,9 +249,6 @@
                                         </span>
 
                                     </td>
-
-
-                                    <!-- TIME IN -->
 
                                     <td>
 
@@ -300,9 +265,6 @@
                                 </small>
 
                             </td>
-
-
-                            <!-- TIME OUT -->
 
                             <td>
 
@@ -329,9 +291,6 @@
 
                                     </td>
 
-
-                                    <!-- STATUS -->
-
                                     <td>
 
                                         @if (item.Status == "Using")
@@ -349,14 +308,9 @@
 
                                     </td>
 
-
-                                    <!-- ACTIONS -->
-
                                     <td class="text-end pe-4">
 
                                         <div class="btn-group">
-
-                                            <!-- DETAILS -->
 
                                             <a asp-action="Details"
                                                asp-route-id="@item.Id"
@@ -366,9 +320,6 @@
 
                                             </a>
 
-
-                                            <!-- EDIT -->
-
                                             <a asp-action="Edit"
                                                asp-route-id="@item.Id"
                                                class="btn btn-sm btn-outline-primary">
@@ -377,8 +328,6 @@
 
                                             </a>
 
-
-                                            <!-- TIME OUT -->
                                             @if (item.Status == "Using")
                                             {
                                                 <a asp-action="TimeOut"
@@ -389,9 +338,6 @@
 
                                                 </a>
                                             }
-
-
-                                            <!-- DELETE -->
 
                                             <form asp-action="Delete"
                                                   asp-route-id="@item.Id"

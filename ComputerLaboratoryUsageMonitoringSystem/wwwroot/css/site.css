@@ -1,27 +1,26 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
-/* ---------- NAVIGATION ---------- */
 
 .lab-navbar {
     background: linear-gradient( 135deg, #172554, #1e3a8a );
@@ -71,8 +70,6 @@ body {
     }
 
 
-/* ---------- USER AREA ---------- */
-
 .user-welcome {
     color: rgba(255, 255, 255, 0.9) !important;
     font-size: 0.9rem;
@@ -83,8 +80,6 @@ body {
     margin-right: 4px;
 }
 
-
-/* ---------- NAV BUTTONS ---------- */
 
 .logout-btn,
 .register-nav-btn {
@@ -100,15 +95,10 @@ body {
         transform: translateY(-1px);
     }
 
-
-/* ---------- MAIN PAGE ---------- */
-
 main {
     min-height: calc(100vh - 140px);
 }
 
-
-/* ---------- FOOTER ---------- */
 
 .lab-footer {
     background-color: #ffffff;
@@ -124,8 +114,6 @@ main {
 }
 
 
-/* ---------- GENERAL CARDS ---------- */
-
 .card {
     border: 1px solid #e9ecef;
     border-radius: 12px;
@@ -139,8 +127,6 @@ main {
     }
 
 
-/* ---------- BUTTONS ---------- */
-
 .btn {
     border-radius: 7px;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -151,8 +137,6 @@ main {
         transform: translateY(-1px);
     }
 
-
-/* ---------- FORM INPUTS ---------- */
 
 .form-control,
 .form-select {
@@ -167,9 +151,6 @@ main {
         border-color: #86a5e5;
         box-shadow: 0 0 0 0.2rem rgba( 30, 58, 138, 0.12 );
     }
-
-
-/* ---------- TABLE ---------- */
 
 .table {
     margin-bottom: 0;
@@ -191,16 +172,11 @@ main {
     }
 
 
-/* ---------- STATUS BADGES ---------- */
-
 .badge {
     border-radius: 50px;
     padding: 0.5em 0.75em;
     font-weight: 500;
 }
-
-
-/* ---------- RESPONSIVE ---------- */
 
 @media (max-width: 991px) {
 
@@ -224,68 +200,48 @@ main {
 
 .home-system-card {
     background: #ffffff;
-
     border: 1px solid #e5e7eb;
-
     border-radius: 16px;
-
     padding: 2rem;
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
 }
 
 
 .system-card-icon {
     width: 64px;
     height: 64px;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     background: #eff6ff;
-
     border-radius: 14px;
-
     font-size: 2rem;
 }
 
 
 .system-feature {
     display: flex;
-
     align-items: flex-start;
-
     gap: 12px;
-
     padding: 12px 0;
-
     border-top: 1px solid #f0f1f3;
 }
 
 
-.system-feature:first-of-type {
-    border-top: none;
-}
+    .system-feature:first-of-type {
+        border-top: none;
+    }
 
 
 .feature-icon {
     width: 38px;
     height: 38px;
-
     flex-shrink: 0;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     background: #f8f9fa;
-
     border-radius: 9px;
-
     font-size: 1.1rem;
 }
 
@@ -293,23 +249,13 @@ main {
 .feature-card-icon {
     width: 46px;
     height: 46px;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     background: #eff6ff;
-
     border-radius: 10px;
-
     font-size: 1.3rem;
 }
-
-/* ==========================================
-   LABORATORY SESSION / MONITORING PAGE
-   ========================================== */
-
 
 .computer-number {
     display: inline-block;
@@ -386,4 +332,3 @@ main {
         min-width: 1000px;
     }
 }
-
